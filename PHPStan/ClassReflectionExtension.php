@@ -69,7 +69,15 @@ class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassR
             );
         }
 
-        return new PropertyReflectionExtension($ref, $this->broker, $propertyName);
+        return $this->ObtainPropertyReflection($ref, $this->broker, $propertyName);
+    }
+
+    protected function ObtainPropertyReflection(
+        ClassReflection $ref,
+        Broker $broker,
+        string $propertyName
+    ) : PropertyReflection {
+        return new PropertyReflectionExtension($ref, $broker, $propertyName);
     }
 
     protected function MaybeRegisterTypesOrExitEarly(
