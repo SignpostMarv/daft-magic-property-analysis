@@ -146,7 +146,7 @@ class DefinitionAssistantTest extends Base
             '::RegisterType() must declare __get() !'
         );
 
-        DefinitionAssistant::RegisterType(Closure::class, function () : void {}, null);
+        DefinitionAssistant::RegisterType(Closure::class, function () : void {}, null, 'foo');
     }
 
     /**
@@ -163,7 +163,7 @@ class DefinitionAssistantTest extends Base
             '::RegisterType() must declare __set() !'
         );
 
-        DefinitionAssistant::RegisterType(Closure::class, null, function () : void {});
+        DefinitionAssistant::RegisterType(Closure::class, null, function () : void {}, 'foo');
     }
 
     /**

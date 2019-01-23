@@ -70,6 +70,14 @@ class DefinitionAssistant
                 __METHOD__ .
                 '() has already been registered!'
             );
+        } elseif (is_null($getter) && is_null($setter)) {
+            throw new InvalidArgumentException(
+                'One or both of arguments 2 and 3 must be specified!'
+            );
+        } elseif (count($properties) < self::COUNT_EXPECT_AT_LEAST_ONE_PROPERTY) {
+            throw new InvalidArgumentException(
+                'Argument 4 must be specified!'
+            );
         } elseif ( ! is_null($getter) && ! method_exists($type, '__get')) {
             throw new InvalidArgumentException(
                 'Argument 1 passed to ' .
@@ -81,14 +89,6 @@ class DefinitionAssistant
                 'Argument 1 passed to ' .
                 __METHOD__ .
                 '() must declare __set() !'
-            );
-        } elseif (is_null($getter) && is_null($setter)) {
-            throw new InvalidArgumentException(
-                'One or both of arguments 2 and 3 must be specified!'
-            );
-        } elseif (count($properties) < self::COUNT_EXPECT_AT_LEAST_ONE_PROPERTY) {
-            throw new InvalidArgumentException(
-                'Argument 4 must be specified!'
             );
         }
 
