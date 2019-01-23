@@ -225,6 +225,16 @@ class DefinitionAssistant
         string $method,
         bool $isParam
     ) : Closure {
+        $not_named_type = ' named return type';
+        $nullable = '';
+        $return_type = 'return type';
+
+        if ($isParam) {
+            $not_named_type = ' strongly-typed first argument';
+            $nullable = 'non-';
+            $return_type = 'first argument';
+        }
+
         if ( ! ($ref instanceof ReflectionNamedType)) {
             throw new InvalidArgumentException(
                 'Argument ' .
@@ -232,7 +242,7 @@ class DefinitionAssistant
                 ' passed to ' .
                 $method .
                 '() must be a closure with a' .
-                ($isParam ? ' strongly-typed first argument' : ' named return type') .
+                $not_named_type .
                 '!'
             );
         } elseif ($isParam ? $ref->allowsNull() : ( ! $ref->allowsNull())) {
@@ -242,9 +252,10 @@ class DefinitionAssistant
                 ' passed to ' .
                 $method .
                 '() must be a closure with a ' .
-                ($isParam ? 'non-' : '') .
+                $nullable .
                 'nullable ' .
-                ($isParam ? 'first argument!' : 'return type!')
+                $return_type .
+                '!'
             );
         } elseif ('string' !== $ref->getName()) {
             throw new InvalidArgumentException(
@@ -253,7 +264,7 @@ class DefinitionAssistant
                 ' passed to ' .
                 $method .
                 '() must be a closure with a string ' .
-                ($isParam ? 'first argument' : 'return type') .
+                $return_type .
                 ', ' .
                 $ref->getName() .
                 ' given!'
