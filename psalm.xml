@@ -15,5 +15,15 @@
     </projectFiles>
 
     <issueHandlers>
+        <NoInterfaceProperties>
+            <errorLevel type="suppress">
+                <referencedClass
+                    name="SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface"
+                />
+            </errorLevel>
+        </NoInterfaceProperties>
     </issueHandlers>
+    <plugins>
+        <plugin filename="./Psalm/Plugin.php" />
+    </plugins>
 </psalm>
