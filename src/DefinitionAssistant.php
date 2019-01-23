@@ -98,11 +98,21 @@ class DefinitionAssistant
             );
             }
 
-            static::$getters[$type] = static::ValidateClosure(
+            /**
+            * @var string
+            */
+            $type = $type;
+
+            /**
+            * @var Closure
+            */
+            $getter = static::ValidateClosure(
                 $getter,
                 self::ARG_INDEX_CLOSURE_GETTER,
                 (__CLASS__ . '::RegisterType')
             );
+
+            self::$getters[$type] = $getter;
         }
     }
 
@@ -118,11 +128,21 @@ class DefinitionAssistant
             );
             }
 
-            static::$setters[$type] = static::ValidateClosure(
+            /**
+            * @var string
+            */
+            $type = $type;
+
+            /**
+            * @var Closure
+            */
+            $setter = static::ValidateClosure(
                 $setter,
                 self::ARG_INDEX_CLOSURE_SETTER,
                 (__CLASS__ . '::RegisterType')
             );
+
+            self::$setters[$type] = $setter;
         }
     }
 
