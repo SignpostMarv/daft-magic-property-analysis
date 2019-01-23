@@ -226,13 +226,9 @@ class DefinitionAssistant
         bool $isParam
     ) : Closure {
         $not_named_type = ' named return type';
-        $nullable = '';
-        $return_type = 'return type';
 
         if ($isParam) {
             $not_named_type = ' strongly-typed first argument';
-            $nullable = 'non-';
-            $return_type = 'first argument';
         }
 
         if ( ! ($ref instanceof ReflectionNamedType)) {
