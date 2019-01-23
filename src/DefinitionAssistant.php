@@ -78,37 +78,52 @@ class DefinitionAssistant
             throw new InvalidArgumentException(
                 'Argument 4 must be specified!'
             );
-        } elseif ( ! is_null($getter) && ! method_exists($type, '__get')) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __METHOD__ .
-                '() must declare __get() !'
-            );
-        } elseif ( ! is_null($setter) && ! method_exists($type, '__set')) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __METHOD__ .
-                '() must declare __set() !'
-            );
         }
 
+        static::MaybeRegisterTypeGetter($type, $getter);
+        static::MaybeRegisterTypeSetter($type, $setter);
+
+        static::$properties[$type] = $properties;
+    }
+
+    private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
+    {
         if ( ! is_null($getter)) {
+            if ( ! method_exists($type, '__get')) {
+            throw new InvalidArgumentException(
+                'Argument 1 passed to ' .
+                __CLASS__ .
+                '::RegisterType' .
+                '() must declare __get() !'
+            );
+            }
+
             static::$getters[$type] = static::ValidateClosure(
                 $getter,
                 self::ARG_INDEX_CLOSURE_GETTER,
-                __METHOD__
+                (__CLASS__ . '::RegisterType')
             );
         }
+    }
 
+    private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void
+    {
         if ( ! is_null($setter)) {
+            if ( ! method_exists($type, '__set')) {
+            throw new InvalidArgumentException(
+                'Argument 1 passed to ' .
+                __CLASS__ .
+                '::RegisterType' .
+                '() must declare __set() !'
+            );
+            }
+
             static::$setters[$type] = static::ValidateClosure(
                 $setter,
                 self::ARG_INDEX_CLOSURE_SETTER,
-                __METHOD__
+                (__CLASS__ . '::RegisterType')
             );
         }
-
-        static::$properties[$type] = $properties;
     }
 
     public static function GetterMethodName(string $type, string $property) : ? string
