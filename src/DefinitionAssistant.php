@@ -93,8 +93,7 @@ class DefinitionAssistant
                 throw new InvalidArgumentException(
                     'Argument 1 passed to ' .
                     __CLASS__ .
-                    '::RegisterType' .
-                    '() must declare __get() !'
+                    '::RegisterType() must declare __get() !'
                 );
             }
 
@@ -123,8 +122,7 @@ class DefinitionAssistant
                 throw new InvalidArgumentException(
                     'Argument 1 passed to ' .
                     __CLASS__ .
-                    '::RegisterType' .
-                    '() must declare __set() !'
+                    '::RegisterType() must declare __set() !'
                 );
             }
 
