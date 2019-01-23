@@ -86,64 +86,6 @@ class DefinitionAssistant
         static::$properties[$type] = $properties;
     }
 
-    private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
-    {
-        if ( ! is_null($getter)) {
-            if ( ! method_exists($type, '__get')) {
-                throw new InvalidArgumentException(
-                    'Argument 1 passed to ' .
-                    __CLASS__ .
-                    '::RegisterType() must declare __get() !'
-                );
-            }
-
-            /**
-            * @var string
-            */
-            $type = $type;
-
-            /**
-            * @var Closure
-            */
-            $getter = static::ValidateClosure(
-                $getter,
-                self::ARG_INDEX_CLOSURE_GETTER,
-                (__CLASS__ . '::RegisterType')
-            );
-
-            self::$getters[$type] = $getter;
-        }
-    }
-
-    private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void
-    {
-        if ( ! is_null($setter)) {
-            if ( ! method_exists($type, '__set')) {
-                throw new InvalidArgumentException(
-                    'Argument 1 passed to ' .
-                    __CLASS__ .
-                    '::RegisterType() must declare __set() !'
-                );
-            }
-
-            /**
-            * @var string
-            */
-            $type = $type;
-
-            /**
-            * @var Closure
-            */
-            $setter = static::ValidateClosure(
-                $setter,
-                self::ARG_INDEX_CLOSURE_SETTER,
-                (__CLASS__ . '::RegisterType')
-            );
-
-            self::$setters[$type] = $setter;
-        }
-    }
-
     public static function GetterMethodName(string $type, string $property) : ? string
     {
         if (
@@ -314,5 +256,63 @@ class DefinitionAssistant
         }
 
         return $closure;
+    }
+
+    private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
+    {
+        if ( ! is_null($getter)) {
+            if ( ! method_exists($type, '__get')) {
+                throw new InvalidArgumentException(
+                    'Argument 1 passed to ' .
+                    __CLASS__ .
+                    '::RegisterType() must declare __get() !'
+                );
+            }
+
+            /**
+            * @var string
+            */
+            $type = $type;
+
+            /**
+            * @var Closure
+            */
+            $getter = static::ValidateClosure(
+                $getter,
+                self::ARG_INDEX_CLOSURE_GETTER,
+                (__CLASS__ . '::RegisterType')
+            );
+
+            self::$getters[$type] = $getter;
+        }
+    }
+
+    private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void
+    {
+        if ( ! is_null($setter)) {
+            if ( ! method_exists($type, '__set')) {
+                throw new InvalidArgumentException(
+                    'Argument 1 passed to ' .
+                    __CLASS__ .
+                    '::RegisterType() must declare __set() !'
+                );
+            }
+
+            /**
+            * @var string
+            */
+            $type = $type;
+
+            /**
+            * @var Closure
+            */
+            $setter = static::ValidateClosure(
+                $setter,
+                self::ARG_INDEX_CLOSURE_SETTER,
+                (__CLASS__ . '::RegisterType')
+            );
+
+            self::$setters[$type] = $setter;
+        }
     }
 }
