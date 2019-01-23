@@ -10,8 +10,8 @@ if (
 }
 
 \xdebug_set_filter(
-    \XDEBUG_FILTER_CODE_COVERAGE,
-    \XDEBUG_PATH_WHITELIST,
+    constant('XDEBUG_FILTER_CODE_COVERAGE'),
+    constant('XDEBUG_PATH_WHITELIST'),
     [
         __DIR__ . '/src/',
         __DIR__ . '/Tests/DefinitionAssistant.php',
