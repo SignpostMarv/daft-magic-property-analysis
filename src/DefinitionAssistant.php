@@ -90,12 +90,12 @@ class DefinitionAssistant
     {
         if ( ! is_null($getter)) {
             if ( ! method_exists($type, '__get')) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __CLASS__ .
-                '::RegisterType' .
-                '() must declare __get() !'
-            );
+                throw new InvalidArgumentException(
+                    'Argument 1 passed to ' .
+                    __CLASS__ .
+                    '::RegisterType' .
+                    '() must declare __get() !'
+                );
             }
 
             /**
@@ -120,12 +120,12 @@ class DefinitionAssistant
     {
         if ( ! is_null($setter)) {
             if ( ! method_exists($type, '__set')) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __CLASS__ .
-                '::RegisterType' .
-                '() must declare __set() !'
-            );
+                throw new InvalidArgumentException(
+                    'Argument 1 passed to ' .
+                    __CLASS__ .
+                    '::RegisterType' .
+                    '() must declare __set() !'
+                );
             }
 
             /**
