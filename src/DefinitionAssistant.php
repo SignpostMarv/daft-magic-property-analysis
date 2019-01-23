@@ -272,8 +272,7 @@ class DefinitionAssistant
             $return_type = 'first argument';
         }
 
-        if (false) {
-        } elseif ($isParam ? $ref->allowsNull() : ( ! $ref->allowsNull())) {
+        if ($isParam ? $ref->allowsNull() : ( ! $ref->allowsNull())) {
             throw new InvalidArgumentException(
                 'Argument ' .
                 $argument .
