@@ -245,6 +245,34 @@ class DefinitionAssistant
                 $not_named_type .
                 '!'
             );
+        }
+
+        return static::ValidateTypeExpectNonNullableStringWithNamedType(
+            $closure,
+            $ref,
+            $argument,
+            $method,
+            $isParam
+        );
+    }
+
+
+    protected static function ValidateTypeExpectNonNullableStringWithNamedType(
+        Closure $closure,
+        ReflectionNamedType $ref,
+        int $argument,
+        string $method,
+        bool $isParam
+    ) : Closure {
+        $nullable = '';
+        $return_type = 'return type';
+
+        if ($isParam) {
+            $nullable = 'non-';
+            $return_type = 'first argument';
+        }
+
+        if (false) {
         } elseif ($isParam ? $ref->allowsNull() : ( ! $ref->allowsNull())) {
             throw new InvalidArgumentException(
                 'Argument ' .
