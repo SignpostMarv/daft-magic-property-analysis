@@ -1,0 +1,8 @@
+includes:
+    - ./vendor/phpstan/phpstan/conf/config.levelmax.neon
+    - ./vendor/phpstan/phpstan-strict-rules/rules.neon
+
+parameters:
+    ignoreErrors:
+        - "/Call to function method_exists\\(\\) with string and '__[gs]et' will always evaluate to false./"
+        - "/Access to an undefined property SignpostMarv\\\\DaftMagicPropertyAnalysis\\\\Tests\\\\DaftMagicPropertyAnalysis\\\\Fixtures\\\\ucwordsPrefixed(TypeInterface|Implementation)::\\$fooBar/"

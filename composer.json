@@ -1,0 +1,76 @@
+{
+    "name": "signpostmarv/daft-magic-property-analysis",
+    "description": "Daft way to implement static analysis for magic properties",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SignpostMarv",
+            "email": "me@signpostmarv.name"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SignpostMarv\\DaftMagicPropertyAnalysis\\": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "./quick-checks/test.php"
+        ],
+        "psr-4": {
+            "SignpostMarv\\DaftMagicPropertyAnalysis\\Tests\\": "./Tests/",
+            "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\": "./PHPStan/",
+            "SignpostMarv\\DaftMagicPropertyAnalysis\\Psalm\\": "./Psalm/"
+        }
+    },
+    "config": {
+        "classmap-authoritative": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpunit-dump-debug-filter": [
+            "phpunit --dump-xdebug-filter ./xdebug-filter.phpunit.php",
+            "php-cs-fixer fix --verbose ./xdebug-filter.phpunit.php"
+        ],
+        "phpunit": [
+            "phpunit -vvvv --prepend ./xdebug-filter.phpunit.php --coverage-clover=phpunit.clover"
+        ],
+        "phpunit-no-prepend": [
+            "phpunit -vvvv"
+        ],
+        "tests": [
+            "@phpunit-no-prepend",
+            "@other-tests"
+        ],
+        "scrutinizer": [
+            "@phpunit",
+            "@other-tests"
+        ],
+        "other-tests": [
+            "phpstan analyse -c ./phpstan.neon .php_cs.dist ./src/ ./Tests/ ./PHPStan/ ./quick-checks/",
+            "phpstan analyse -c ./Tests/PHPStan/config.neon ./quick-checks/",
+            "psalm",
+            "phpcpd ./src/ ./Tests/ ./PHPStan/",
+            "phpmnd ./ --exclude=./phpunit/ --exclude=./vendor/ --non-zero-exit-on-violation --hint",
+            "composer-require-checker check ./composer.json",
+            "php-cs-fixer fix --verbose --allow-risky=yes --dry-run"
+        ]
+    },
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "infection/infection": "^0.11.5",
+        "maglnet/composer-require-checker": "^1.1",
+        "phpstan/phpstan": "^0.11.1",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpstan/phpstan-strict-rules": "^0.11.0",
+        "phpunit/phpunit": "^7.5",
+        "povils/phpmnd": "^2.0",
+        "roave/security-advisories": "dev-master",
+        "sebastian/phpcpd": "^4.1",
+        "signpostmarv/php-cs-fixer-config": "^0.6.0",
+        "vimeo/psalm": "^3.0,>=3.0.11"
+    }
+}

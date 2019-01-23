@@ -1,0 +1,5 @@
+services:
+    -
+        class: SignpostMarv\DaftMagicPropertyAnalysis\PHPStan\ClassReflectionExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension

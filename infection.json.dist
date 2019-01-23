@@ -1,0 +1,108 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            ".\/src\/",
+            ".\/PHPStan\/"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "Coalesce": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
+            ]
+        },
+        "LessThan": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType"
+            ]
+        },
+        "LessThanNegotiation": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType"
+            ]
+        },
+        "LogicalAnd": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::hasProperty",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::PropertyIsPublic",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetupReflections",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
+            ]
+        },
+        "LogicalNot": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::IsTypeUnregistered",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::getProperty",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::getDeclaringClass",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::isPrivate"
+            ]
+        },
+        "LogicalOr": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::hasProperty",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::PropertyIsPublic"
+            ]
+        },
+        "MethodCallRemoval": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::__construct"
+            ]
+        },
+        "NotIdentical": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::DetermineDeclaringClass"
+            ]
+        },
+        "ProtectedVisibility": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::MaybeRegisterTypesOrExitEarly",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::DetermineDeclaringClass",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::PropertyIsPublic",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetupReflections",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetGetterProps",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
+            ]
+        },
+        "PublicVisibility": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::IsTypeUnregistered",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName"
+            ]
+        },
+        "Throw_": {
+            "ignore": [
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::getProperty",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::getDeclaringClass",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetGetterProps",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
+            ]
+        }
+    }
+}

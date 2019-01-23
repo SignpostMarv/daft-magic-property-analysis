@@ -1,0 +1,28 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="Daft Magic Property Analysis">
+      <directory>./Tests/DaftMagicPropertyAnalysis/</directory>
+    </testsuite>
+    <testsuite name="Daft Magic Property Analysis: PHPStan">
+      <directory>./Tests/PHPStan/</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <log
+      type="coverage-html"
+      target="phpunit"
+    />
+    <log
+      type="coverage-text"
+      target="php://stdout"
+      showUncoveredFiles="true"
+      showOnlySummary="false"
+    />
+  </logging>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src/</directory>
+      <file>./Tests/DefinitionAssistant.php</file>
+    </whitelist>
+  </filter>
+</phpunit>
