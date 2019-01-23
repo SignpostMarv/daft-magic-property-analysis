@@ -80,6 +80,11 @@ class DefinitionAssistant
             );
         }
 
+        /**
+        * @var string
+        */
+        $type = $type;
+
         static::MaybeRegisterTypeGetter($type, $getter);
         static::MaybeRegisterTypeSetter($type, $setter);
 
