@@ -122,13 +122,11 @@ class DefinitionAssistantTest extends Base
 
     public function testRegisterTypeMustBeAnInterfaceOrClass() : void
     {
-        static::assertTrue(DefinitionAssistant::IsTypeUnregistered('void'));
-
         static::expectException(InvalidArgumentException::class);
         static::expectExceptionMessage(
             'Argument 1 passed to ' .
             BaseDefinitionAssistant::class .
-            '::RegisterType() must be a class or interface!'
+            '::IsTypeUnregistered() must be a class or interface!'
         );
 
         DefinitionAssistant::RegisterType('void', null, null);

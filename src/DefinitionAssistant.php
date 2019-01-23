@@ -47,6 +47,14 @@ class DefinitionAssistant
 
     public static function IsTypeUnregistered(string $type) : bool
     {
+        if ( ! interface_exists($type) && ! class_exists($type)) {
+            throw new InvalidArgumentException(
+                'Argument 1 passed to ' .
+                __METHOD__ .
+                '() must be a class or interface!'
+            );
+        }
+
         return ! isset(static::$properties[$type]);
     }
 
@@ -61,12 +69,6 @@ class DefinitionAssistant
                 'Argument 1 passed to ' .
                 __METHOD__ .
                 '() has already been registered!'
-            );
-        } elseif ( ! interface_exists($type) && ! class_exists($type)) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __METHOD__ .
-                '() must be a class or interface!'
             );
         } elseif ( ! is_null($getter) && ! method_exists($type, '__get')) {
             throw new InvalidArgumentException(
