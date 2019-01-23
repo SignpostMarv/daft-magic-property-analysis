@@ -256,7 +256,6 @@ class DefinitionAssistant
         );
     }
 
-
     protected static function ValidateTypeExpectNonNullableStringWithNamedType(
         Closure $closure,
         ReflectionNamedType $ref,
