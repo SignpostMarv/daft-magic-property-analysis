@@ -4,4 +4,4 @@ includes:
     - ../../PHPStan/config.neon
 
 parameters:
-    - ./bootstrap.php
+    bootstrap: %rootDir%/../../../Tests/PHPStan/bootstrap.php
