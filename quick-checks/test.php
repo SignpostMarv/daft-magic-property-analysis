@@ -9,7 +9,10 @@ namespace SignpostMarv\DaftMagicPropertyAnalysis\Tests;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
 
 function bat() : DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface {
-    return new DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedImplementation();
+    return
+        random_int(0, 1) === 1
+            ? new DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedImplementation()
+            : new DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedIdentical();
 }
 
 $foo = bat();
