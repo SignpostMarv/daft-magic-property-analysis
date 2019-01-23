@@ -30,8 +30,7 @@
     },
     "scripts": {
         "phpunit-dump-debug-filter": [
-            "phpunit --dump-xdebug-filter ./xdebug-filter.phpunit.php",
-            "php-cs-fixer fix --verbose ./xdebug-filter.phpunit.php"
+            "phpunit --dump-xdebug-filter ./xdebug-filter.phpunit.php"
         ],
         "phpunit": [
             "phpunit -vvvv --prepend ./xdebug-filter.phpunit.php --coverage-clover=phpunit.clover"
