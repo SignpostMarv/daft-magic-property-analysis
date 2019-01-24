@@ -28,10 +28,10 @@ class Plugin implements AfterClassLikeVisitInterface
        array &$file_replacements = []
     ) : void {
         if ($storage->name === ucwordsPrefixedTypeInterface::class) {
-            var_dump(static::MaybeRegisterTypesOrExitEarly($stmt->name));exit(1);
-            if (static::MaybeRegisterTypesOrExitEarly($stmt->name)) {
-                foreach (DefinitionAssistant::ObtainExpectedProperties($stmt->name) as $property) {
-                    var_dump($stmt->name, $storage);exit(1);
+            var_dump(static::MaybeRegisterTypesOrExitEarly($storage->name));exit(1);
+            if (static::MaybeRegisterTypesOrExitEarly($storage->name)) {
+                foreach (DefinitionAssistant::ObtainExpectedProperties($storage->name) as $property) {
+                    var_dump($storage->name, $storage);exit(1);
                 }
             }
 
