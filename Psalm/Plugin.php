@@ -15,6 +15,7 @@ use Psalm\Plugin\Hook\AfterClassLikeVisitInterface;
 use Psalm\Plugin\Hook\AfterClassLikeStoragePopulated;
 use Psalm\Storage\ClassLikeStorage;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
+use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface;
 
 class Plugin implements AfterClassLikeVisitInterface
 {
@@ -26,7 +27,7 @@ class Plugin implements AfterClassLikeVisitInterface
        Codebase $codebase,
        array &$file_replacements = []
     ) : void {
-        if ($stmt->name->name === "SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface") {
+        if ($storage->name === ucwordsPrefixedTypeInterface::class) {
             var_dump(static::MaybeRegisterTypesOrExitEarly($stmt->name));exit(1);
             if (static::MaybeRegisterTypesOrExitEarly($stmt->name)) {
                 foreach (DefinitionAssistant::ObtainExpectedProperties($stmt->name) as $property) {
