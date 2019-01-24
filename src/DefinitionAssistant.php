@@ -9,6 +9,7 @@ namespace SignpostMarv\DaftMagicPropertyAnalysis;
 use Closure;
 use InvalidArgumentException;
 use ReflectionFunction;
+use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionType;
 
@@ -158,6 +159,24 @@ class DefinitionAssistant
         )));
 
         return $out;
+    }
+
+    public static function PropertyIsPublic(String $className, string $property) : bool
+    {
+        $getter = DefinitionAssistant::GetterMethodName($className, $property);
+        $setter = DefinitionAssistant::SetterMethodName($className, $property);
+
+        return
+            (
+                is_string($getter) &&
+                method_exists($className, $getter) &&
+                (new ReflectionMethod($className, $getter))->isPublic()
+            ) ||
+            (
+                is_string($setter) &&
+                method_exists($className, $setter) &&
+                (new ReflectionMethod($className, $setter))->isPublic()
+            );
     }
 
     protected static function ValidateClosure(

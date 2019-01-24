@@ -71,7 +71,7 @@ class PropertyReflectionExtension implements PropertyReflection
     {
         $this->broker = $broker;
 
-        $this->public = static::PropertyIsPublic($classReflection->getName(), $property);
+        $this->public = DefinitionAssistant::PropertyIsPublic($classReflection->getName(), $property);
 
         $this->type = new MixedType();
 

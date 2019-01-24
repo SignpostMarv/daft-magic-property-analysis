@@ -4,10 +4,12 @@
 */
 declare(strict_types=1);
 
-namespace SignpostMarv\DaftMagicPropertyAnalysis\Tests\PHPStan;
+namespace SignpostMarv\DaftMagicPropertyAnalysis\Tests\Psalm;
 
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
 use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis;
+
+require_once(__DIR__ . '/../../vendor/autoload.php');
 
 $getter = function (string $property) : ? string {
     return

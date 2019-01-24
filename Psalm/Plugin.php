@@ -11,9 +11,14 @@ use PhpParser\Node\Identifier;
 use Psalm\Codebase;
 use Psalm\FileManipulation;
 use Psalm\FileSource;
+use Psalm\Internal\Analyzer\ClassLikeAnalyzer;
 use Psalm\Plugin\Hook\AfterClassLikeVisitInterface;
 use Psalm\Plugin\Hook\AfterClassLikeStoragePopulated;
 use Psalm\Storage\ClassLikeStorage;
+use Psalm\Storage\PropertyStorage;
+use Psalm\Type\Union;
+use Psalm\Type\Atomic\Mixed;
+use ReflectionMethod;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
 use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface;
 
@@ -27,29 +32,25 @@ class Plugin implements AfterClassLikeVisitInterface
        Codebase $codebase,
        array &$file_replacements = []
     ) : void {
-        if ($storage->name === ucwordsPrefixedTypeInterface::class) {
-            var_dump(static::MaybeRegisterTypesOrExitEarly($storage->name));exit(1);
-            if (static::MaybeRegisterTypesOrExitEarly($storage->name)) {
-                foreach (DefinitionAssistant::ObtainExpectedProperties($storage->name) as $property) {
-                    var_dump($storage->name, $storage);exit(1);
-                }
-            }
+        $maybeExitEarly = static::MaybeRegisterTypesOrExitEarly($storage->name);
 
+        if (is_null($maybeExitEarly)) {
+            foreach (DefinitionAssistant::ObtainExpectedProperties($storage->name) as $property) {
+                $getter = DefinitionAssistant::GetterMethodName($storage->name, $property);
+                $setter = DefinitionAssistant::SetterMethodName($storage->name, $property);
+
+                $storage->properties[$property] = new PropertyStorage();
+                $storage->properties[$property]->is_static = false;
+                $storage->properties[$property]->visibility =
+                    DefinitionAssistant::PropertyIsPublic($storage->name, $property)
+                        ? ClassLikeAnalyzer::VISIBILITY_PUBLIC
+                        : ClassLikeAnalyzer::VISIBILITY_PROTECTED;
+            }
         }
     }
 
-    protected static function MaybeRegisterTypesOrExitEarly(? Identifier $classLikeName) : ? bool
+    protected static function MaybeRegisterTypesOrExitEarly(string $className) : ? bool
     {
-        if ( ! is_null($classLikeName)) {
-            var_dump($classLikeName->name);
-        }
-        if (
-            ! is_null($classLikeName) &&
-            ! DefinitionAssistant::IsTypeUnregistered($classLikeName->name)
-        ) {
-            return true;
-        }
-
-        return false;
+        return null;
     }
 }
