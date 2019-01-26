@@ -44,6 +44,7 @@
         ],
         "scrutinizer": [
             "@phpunit",
+            "infection --min-msi=100",
             "@other-tests"
         ],
         "other-tests": [
