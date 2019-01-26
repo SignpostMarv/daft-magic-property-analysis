@@ -64,7 +64,7 @@ class DefinitionAssistant
         ? Closure $setter,
         string ...$properties
     ) : void {
-        if ( ! static::IsTypeUnregistered($type)) {
+        if ( ! self::IsTypeUnregistered($type)) {
             throw new InvalidArgumentException(
                 'Argument 1 passed to ' .
                 __METHOD__ .
