@@ -105,6 +105,17 @@ class DefinitionAssistant
             return $out;
         }
 
+        return self::CheckOtherTypes(self::$getters, $type, $property);
+    }
+
+    /**
+    * @param array<string, Closure>
+    */
+    protected static function CheckOtherTypes(
+        array $otherTypes,
+        string $type,
+        string $property
+    ) : ? string {
         foreach (self::$getters as $otherType => $getter) {
             if (
                 $otherType !== $type &&
@@ -120,7 +131,6 @@ class DefinitionAssistant
             }
         }
 
-        return null;
     }
 
     public static function SetterMethodName(string $type, string $property) : ? string
@@ -137,7 +147,7 @@ class DefinitionAssistant
             return $out;
         }
 
-        return null;
+        return self::CheckOtherTypes(self::$setters, $type, $property);
     }
 
     /**
