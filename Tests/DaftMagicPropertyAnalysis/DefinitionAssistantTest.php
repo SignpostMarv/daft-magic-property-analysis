@@ -15,6 +15,9 @@ use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DefinitionAssistant;
 
 class DefinitionAssistantTest extends Base
 {
+    /**
+    * @return array<int, array{0:class-string, 1:Closure, 2:Closure, 3:array<int, string>, 4:array<string, string>, 5:array<string, string>}>
+    */
     public function DataProviderRegisterTypeSuccessFromArray() : array
     {
         return [
@@ -378,5 +381,51 @@ class DefinitionAssistantTest extends Base
             'foo',
             $isParam
         );
+    }
+
+    /**
+    * @depends testRegisterTypeSuccess
+    */
+    public function testCheckOtherSources() : void
+    {
+        DefinitionAssistant::ClearTypes();
+
+        static::assertTrue(DefinitionAssistant::IsTypeUnregistered(
+            Fixtures\ucwordsPrefixedImplementationChild::class
+        ));
+
+        static::assertSame([], DefinitionAssistant::ObtainExpectedProperties(
+            Fixtures\ucwordsPrefixedImplementationChild::class
+        ));
+
+        static::assertNull(DefinitionAssistant::PublicCheckOtherTypesGetters(
+            Fixtures\ucwordsPrefixedImplementationChild::class,
+            'fooBar'
+        ));
+
+        static::assertNull(DefinitionAssistant::PublicCheckOtherTypesSetters(
+            Fixtures\ucwordsPrefixedImplementationChild::class,
+            'fooBar'
+        ));
+
+        foreach ($this->DataProviderRegisterTypeSuccessFromArray() as $args) {
+            if (Fixtures\ucwordsPrefixedImplementation::class === ($args[0] ?? null)) {
+                DefinitionAssistant::RegisterType($args[0], $args[1], $args[2], ...$args[3]);
+            }
+        }
+
+        static::assertSame(['fooBar'], DefinitionAssistant::ObtainExpectedProperties(
+            Fixtures\ucwordsPrefixedImplementation::class
+        ));
+
+        static::assertSame('GetFooBar', DefinitionAssistant::PublicCheckOtherTypesGetters(
+            Fixtures\ucwordsPrefixedImplementationChild::class,
+            'fooBar'
+        ));
+
+        static::assertSame('SetFooBar', DefinitionAssistant::PublicCheckOtherTypesSetters(
+            Fixtures\ucwordsPrefixedImplementationChild::class,
+            'fooBar'
+        ));
     }
 }
