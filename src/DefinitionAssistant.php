@@ -105,6 +105,21 @@ class DefinitionAssistant
             return $out;
         }
 
+        foreach (self::$getters as $otherType => $getter) {
+            if (
+                $otherType !== $type &&
+                isset(self::$properties[$otherType]) &&
+                in_array($property, self::$properties[$otherType], self::IN_ARRAY_STRICT_MODE)
+            ) {
+                /**
+                * @var string|null
+                */
+                $out = $getter($property);
+
+                return $out;
+            }
+        }
+
         return null;
     }
 
