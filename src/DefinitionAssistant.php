@@ -108,32 +108,6 @@ class DefinitionAssistant
         return self::CheckOtherTypes(self::$getters, $type, $property);
     }
 
-    /**
-    * @param array<string, Closure>
-    */
-    protected static function CheckOtherTypes(
-        array $otherTypes,
-        string $type,
-        string $property
-    ) : ? string {
-        foreach (self::$getters as $otherType => $getter) {
-            if (
-                $otherType !== $type &&
-                isset(self::$properties[$otherType]) &&
-                in_array($property, self::$properties[$otherType], self::IN_ARRAY_STRICT_MODE)
-            ) {
-                /**
-                * @var string|null
-                */
-                $out = $getter($property);
-
-                return $out;
-            }
-        }
-
-        return null;
-    }
-
     public static function SetterMethodName(string $type, string $property) : ? string
     {
         if (
@@ -184,6 +158,32 @@ class DefinitionAssistant
         )));
 
         return $out;
+    }
+
+    /**
+    * @param array<string, Closure>
+    */
+    protected static function CheckOtherTypes(
+        array $otherTypes,
+        string $type,
+        string $property
+    ) : ? string {
+        foreach (self::$getters as $otherType => $getter) {
+            if (
+                $otherType !== $type &&
+                isset(self::$properties[$otherType]) &&
+                in_array($property, self::$properties[$otherType], self::IN_ARRAY_STRICT_MODE)
+            ) {
+                /**
+                * @var string|null
+                */
+                $out = $getter($property);
+
+                return $out;
+            }
+        }
+
+        return null;
     }
 
     protected static function ValidateClosure(
