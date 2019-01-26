@@ -131,6 +131,7 @@ class DefinitionAssistant
             }
         }
 
+        return null;
     }
 
     public static function SetterMethodName(string $type, string $property) : ? string
