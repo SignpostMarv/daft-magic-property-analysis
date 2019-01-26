@@ -168,7 +168,7 @@ class DefinitionAssistant
         string $type,
         string $property
     ) : ? string {
-        foreach (self::$getters as $otherType => $getter) {
+        foreach ($otherTypes as $otherType => $getter) {
             if (
                 $otherType !== $type &&
                 isset(self::$properties[$otherType]) &&
