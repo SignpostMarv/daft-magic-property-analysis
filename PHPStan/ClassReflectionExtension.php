@@ -38,13 +38,15 @@ class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassR
 
         $className = $classReflection->getName();
 
+        $expectedProperties = DefinitionAssistant::ObtainExpectedProperties($className);
+
         $getter = DefinitionAssistant::GetterMethodName($className, $propertyName);
         $setter = DefinitionAssistant::SetterMethodName($className, $propertyName);
 
         return
             in_array(
                 $propertyName,
-                DefinitionAssistant::ObtainExpectedProperties($className),
+                $expectedProperties,
                 self::IN_ARRAY_STRICT_MODE
             ) &&
             (
