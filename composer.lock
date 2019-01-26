@@ -3867,16 +3867,16 @@
         },
         {
             "name": "signpostmarv/php-cs-fixer-config",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SignpostMarv/PHP-CS-Fixer-Config.git",
-                "reference": "c1e136fc4bc7ae55ad3c6249dec57732745240b1"
+                "reference": "51a53271308a3537937a2b73a096f6dd172b8136"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SignpostMarv/PHP-CS-Fixer-Config/zipball/c1e136fc4bc7ae55ad3c6249dec57732745240b1",
-                "reference": "c1e136fc4bc7ae55ad3c6249dec57732745240b1",
+                "url": "https://api.github.com/repos/SignpostMarv/PHP-CS-Fixer-Config/zipball/51a53271308a3537937a2b73a096f6dd172b8136",
+                "reference": "51a53271308a3537937a2b73a096f6dd172b8136",
                 "shasum": ""
             },
             "require": {
@@ -3909,7 +3909,7 @@
                 }
             ],
             "description": "PHP-CS-Fixer Config",
-            "time": "2018-12-02T15:25:10+00:00"
+            "time": "2019-01-24T20:07:56+00:00"
         },
         {
             "name": "symfony/console",
