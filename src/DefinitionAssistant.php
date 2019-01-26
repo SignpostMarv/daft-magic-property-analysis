@@ -161,7 +161,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @param array<string, Closure>
+    * @param array<string, Closure> $otherTypes
     */
     protected static function CheckOtherTypes(
         array $otherTypes,
