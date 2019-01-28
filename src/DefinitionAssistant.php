@@ -65,7 +65,7 @@ class DefinitionAssistant
         ? Closure $setter,
         string ...$properties
     ) : void {
-        if ( ! static::IsTypeUnregistered($type)) {
+        if ( ! self::IsTypeUnregistered($type)) {
             throw new InvalidArgumentException(
                 'Argument 1 passed to ' .
                 __METHOD__ .
@@ -106,7 +106,7 @@ class DefinitionAssistant
             return $out;
         }
 
-        return null;
+        return self::CheckOtherTypes(self::$getters, $type, $property);
     }
 
     public static function SetterMethodName(string $type, string $property) : ? string
@@ -123,7 +123,7 @@ class DefinitionAssistant
             return $out;
         }
 
-        return null;
+        return self::CheckOtherTypes(self::$setters, $type, $property);
     }
 
     /**
@@ -177,6 +177,32 @@ class DefinitionAssistant
                 method_exists($className, $setter) &&
                 (new ReflectionMethod($className, $setter))->isPublic()
             );
+    }
+
+    /**
+    * @param array<string, Closure> $otherTypes
+    */
+    protected static function CheckOtherTypes(
+        array $otherTypes,
+        string $type,
+        string $property
+    ) : ? string {
+        foreach ($otherTypes as $otherType => $getter) {
+            if (
+                $otherType !== $type &&
+                isset(self::$properties[$otherType]) &&
+                in_array($property, self::$properties[$otherType], self::IN_ARRAY_STRICT_MODE)
+            ) {
+                /**
+                * @var string|null
+                */
+                $out = $getter($property);
+
+                return $out;
+            }
+        }
+
+        return null;
     }
 
     protected static function ValidateClosure(

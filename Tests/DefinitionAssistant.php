@@ -42,4 +42,18 @@ class DefinitionAssistant extends Base
             $isParam
         );
     }
+
+    public static function PublicCheckOtherTypesGetters(
+        string $type,
+        string $property
+    ) : ? string {
+        return static::CheckOtherTypes(self::$getters, $type, $property);
+    }
+
+    public static function PublicCheckOtherTypesSetters(
+        string $type,
+        string $property
+    ) : ? string {
+        return static::CheckOtherTypes(self::$setters, $type, $property);
+    }
 }
