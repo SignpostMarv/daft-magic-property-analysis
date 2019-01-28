@@ -37,6 +37,8 @@ class Plugin implements AfterClassLikeVisitInterface
                     DefinitionAssistant::PropertyIsPublic($storage->name, $property)
                         ? ClassLikeAnalyzer::VISIBILITY_PUBLIC
                         : ClassLikeAnalyzer::VISIBILITY_PROTECTED;
+
+                var_dump(__LINE__);exit(1);
             }
         }
     }
