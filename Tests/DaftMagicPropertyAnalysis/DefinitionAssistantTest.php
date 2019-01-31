@@ -209,25 +209,6 @@ class DefinitionAssistantTest extends Base
         ];
     }
 
-    /**
-    * @param int|float|resource|null $maybe
-    *
-    * @dataProvider DataProviderNonStringScalarAndResource
-    */
-    public function testObtainExpectedPropertiesExpectsStringOrObject($maybe) : void
-    {
-        static::expectException(InvalidArgumentException::class);
-        static::expectExceptionMessage(
-            'Argument 1 passed to ' .
-            BaseDefinitionAssistant::class .
-            '::ObtainExpectedProperties() must be either a string or an object, ' .
-            gettype($maybe) .
-            ' given!'
-        );
-
-        DefinitionAssistant::ObtainExpectedProperties($maybe);
-    }
-
     public function DataProviderBadClosure() : array
     {
         return [

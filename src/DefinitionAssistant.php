@@ -133,20 +133,12 @@ class DefinitionAssistant
     /**
     * @param mixed $maybe
     *
+    * @psalm-param class-string|object $maybe
+    *
     * @return array<int, string>
     */
     public static function ObtainExpectedProperties($maybe) : array
     {
-        if ( ! is_string($maybe) && ! is_object($maybe)) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __METHOD__ .
-                '() must be either a string or an object, ' .
-                gettype($maybe) .
-                ' given!'
-            );
-        }
-
         /**
         * @var array<int, string>
         */
