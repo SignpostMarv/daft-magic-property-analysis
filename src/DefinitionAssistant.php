@@ -322,6 +322,9 @@ class DefinitionAssistant
         return $closure;
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
     {
         if ( ! is_null($getter)) {
@@ -351,6 +354,9 @@ class DefinitionAssistant
         }
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void
     {
         if ( ! is_null($setter)) {
