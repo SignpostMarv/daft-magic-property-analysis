@@ -51,6 +51,8 @@ class DefinitionAssistantTest extends Base
     * @param array<string, string> $getter_map
     * @param array<string, string> $setter_map
     *
+    * @psalm-param class-string $type
+    *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     */
     public function testRegisterTypeSuccess(
@@ -99,6 +101,8 @@ class DefinitionAssistantTest extends Base
     /**
     * @param array<int, string> $properties
     *
+    * @psalm-param class-string $type
+    *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     *
     * @depends testRegisterTypeSuccess
@@ -132,7 +136,7 @@ class DefinitionAssistantTest extends Base
             '::IsTypeUnregistered() must be a class or interface!'
         );
 
-        DefinitionAssistant::RegisterType('void', null, null);
+        DefinitionAssistant::RegisterType('foo', null, null);
     }
 
     /**
@@ -170,6 +174,8 @@ class DefinitionAssistantTest extends Base
     }
 
     /**
+    * @psalm-param class-string $type
+    *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     *
     * @depends testRegisterTypeSuccess
@@ -189,6 +195,8 @@ class DefinitionAssistantTest extends Base
     }
 
     /**
+    * @psalm-param class-string $type
+    *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     *
     * @depends testRegisterTypeMustSpecifyAtLeastGetterOrSetter

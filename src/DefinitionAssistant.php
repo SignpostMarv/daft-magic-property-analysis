@@ -32,16 +32,22 @@ class DefinitionAssistant
 
     /**
     * @var array<string, array<int, string>>
+    *
+    * @psalm-var array<class-string, array<int, string>>
     */
     protected static $properties = [];
 
     /**
     * @var array<string, Closure>
+    *
+    * @psalm-var array<class-string, Closure>
     */
     protected static $getters = [];
 
     /**
     * @var array<string, Closure>
+    *
+    * @psalm-var array<class-string, Closure>
     */
     protected static $setters = [];
 
@@ -58,6 +64,9 @@ class DefinitionAssistant
         return ! isset(static::$properties[$type]);
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function RegisterType(
         string $type,
         ? Closure $getter,
@@ -80,17 +89,15 @@ class DefinitionAssistant
             );
         }
 
-        /**
-        * @var string
-        */
-        $type = $type;
-
         static::MaybeRegisterTypeGetter($type, $getter);
         static::MaybeRegisterTypeSetter($type, $setter);
 
         static::$properties[$type] = $properties;
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function GetterMethodName(string $type, string $property) : ? string
     {
         if (
@@ -108,6 +115,9 @@ class DefinitionAssistant
         return self::CheckOtherTypes(self::$getters, $type, $property);
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function SetterMethodName(string $type, string $property) : ? string
     {
         if (
@@ -162,6 +172,9 @@ class DefinitionAssistant
 
     /**
     * @param array<string, Closure> $otherTypes
+    *
+    * @psalm-param array<class-string, Closure> $otherTypes
+    * @psalm-param class-string $type
     */
     protected static function CheckOtherTypes(
         array $otherTypes,

@@ -36,6 +36,9 @@ class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassR
             return $maybeExitEarly;
         }
 
+        /**
+        * @psalm-var class-string
+        */
         $className = $classReflection->getName();
 
         $expectedProperties = DefinitionAssistant::ObtainExpectedProperties($className);

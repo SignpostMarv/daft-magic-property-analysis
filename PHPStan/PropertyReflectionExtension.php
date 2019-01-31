@@ -71,7 +71,12 @@ class PropertyReflectionExtension implements PropertyReflection
     {
         $this->broker = $broker;
 
-        $this->public = static::PropertyIsPublic($classReflection->getName(), $property);
+        /**
+        * @psalm-var class-string
+        */
+        $className = $classReflection->getName();
+
+        $this->public = static::PropertyIsPublic($className, $property);
 
         $this->type = new MixedType();
 
@@ -143,6 +148,9 @@ class PropertyReflectionExtension implements PropertyReflection
         );
     }
 
+    /**
+    * @psalm-param class-string $className
+    */
     protected static function PropertyIsPublic(string $className, string $property) : bool
     {
         $getter = DefinitionAssistant::GetterMethodName($className, $property);
@@ -163,6 +171,9 @@ class PropertyReflectionExtension implements PropertyReflection
 
     protected function SetupReflections(ClassReflection $classReflection, string $property) : void
     {
+        /**
+        * @psalm-var class-string
+        */
         $className = $classReflection->getName();
         $getter = DefinitionAssistant::GetterMethodName($className, $property);
         $setter = DefinitionAssistant::SetterMethodName($className, $property);

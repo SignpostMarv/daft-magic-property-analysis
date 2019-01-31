@@ -43,6 +43,9 @@ class DefinitionAssistant extends Base
         );
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function PublicCheckOtherTypesGetters(
         string $type,
         string $property
@@ -50,6 +53,9 @@ class DefinitionAssistant extends Base
         return static::CheckOtherTypes(self::$getters, $type, $property);
     }
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function PublicCheckOtherTypesSetters(
         string $type,
         string $property
