@@ -127,21 +127,6 @@ class DefinitionAssistantTest extends Base
         DefinitionAssistant::RegisterType($type, $getter, $setter, ...$properties);
     }
 
-    public function testRegisterTypeMustBeAnInterfaceOrClass() : void
-    {
-        static::expectException(InvalidArgumentException::class);
-        static::expectExceptionMessage(
-            'Argument 1 passed to ' .
-            BaseDefinitionAssistant::class .
-            '::IsTypeUnregistered() must be a class or interface!'
-        );
-
-        DefinitionAssistant::RegisterType('foo', null, null);
-    }
-
-    /**
-    * @depends testRegisterTypeMustBeAnInterfaceOrClass
-    */
     public function testRegisterTypeMustImplementMagicGetter() : void
     {
         static::assertTrue(DefinitionAssistant::IsTypeUnregistered(Closure::class));
@@ -156,9 +141,6 @@ class DefinitionAssistantTest extends Base
         DefinitionAssistant::RegisterType(Closure::class, function () : void {}, null, 'foo');
     }
 
-    /**
-    * @depends testRegisterTypeMustBeAnInterfaceOrClass
-    */
     public function testRegisterTypeMustImplementMagicSetter() : void
     {
         static::assertTrue(DefinitionAssistant::IsTypeUnregistered(Closure::class));

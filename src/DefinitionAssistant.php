@@ -51,16 +51,11 @@ class DefinitionAssistant
     */
     protected static $setters = [];
 
+    /**
+    * @psalm-param class-string $type
+    */
     public static function IsTypeUnregistered(string $type) : bool
     {
-        if ( ! interface_exists($type) && ! class_exists($type)) {
-            throw new InvalidArgumentException(
-                'Argument 1 passed to ' .
-                __METHOD__ .
-                '() must be a class or interface!'
-            );
-        }
-
         return ! isset(static::$properties[$type]);
     }
 
