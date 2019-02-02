@@ -8,3 +8,4 @@ parameters:
         - "/Access to an undefined property SignpostMarv\\\\DaftMagicPropertyAnalysis\\\\Tests\\\\DaftMagicPropertyAnalysis\\\\Fixtures\\\\ucwordsPrefixed(TypeInterface|Implementation)::\\$fooBar/"
         - "/^PHPDoc tag @(?:var|param|return) has invalid value \\([^\\)]*(?:array){[^\\)]+\\)/"
         - "/^Static method SignpostMarv\\\\DaftMagicPropertyAnalysis\\\\DefinitionAssistant::RegisterType\\(\\) invoked with 3 parameters, at least 4 required.$/"
+        - "/^Array \\(array<string, Closure>\\) does not accept key int\\|string.$/"

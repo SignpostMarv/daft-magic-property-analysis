@@ -159,7 +159,7 @@ class DefinitionAssistant
     /**
     * @param array<string, Closure> $otherTypes
     *
-    * @psalm-param array<class-string, Closure> $otherTypes
+    * @psalm-param array<class-string, Closure(string):?string> $otherTypes
     * @psalm-param class-string $type
     */
     protected static function CheckOtherTypes(
@@ -173,156 +173,16 @@ class DefinitionAssistant
                 isset(self::$properties[$otherType]) &&
                 in_array($property, self::$properties[$otherType], self::IN_ARRAY_STRICT_MODE)
             ) {
-                /**
-                * @var string|null
-                */
-                $out = $getter($property);
-
-                return $out;
+                return $getter($property);
             }
         }
 
         return null;
     }
 
-    protected static function ValidateClosure(
-        Closure $closure,
-        int $argument,
-        string $method
-    ) : Closure {
-        $ref = new ReflectionFunction($closure);
-
-        if (self::COUNT_EXPECTED_REQUIRED_PARAMETERS !== $ref->getNumberOfRequiredParameters()) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must be a closure with 1 required parameter!'
-            );
-        }
-
-        $ref_param = $ref->getParameters()[self::PARAM_INDEX_FIRST];
-
-        if ( ! $ref_param->hasType()) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must be a closure with a typed first argument!'
-            );
-        }
-
-        $closure = static::ValidateTypeExpectNonNullableString(
-            $closure,
-            $ref_param->getType(),
-            $argument,
-            $method,
-            self::BOOL_IS_PARAM
-        );
-
-        if ( ! $ref->hasReturnType()) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must have a return type!'
-            );
-        }
-
-        $ref_return = $ref->getReturnType();
-
-        return static::ValidateTypeExpectNonNullableString(
-            $closure,
-            $ref_return,
-            $argument,
-            $method,
-            self::BOOL_IS_RETURN
-        );
-    }
-
-    protected static function ValidateTypeExpectNonNullableString(
-        Closure $closure,
-        ? ReflectionType $ref,
-        int $argument,
-        string $method,
-        bool $isParam
-    ) : Closure {
-        $not_named_type = ' named return type';
-
-        if ($isParam) {
-            $not_named_type = ' strongly-typed first argument';
-        }
-
-        if ( ! ($ref instanceof ReflectionNamedType)) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must be a closure with a' .
-                $not_named_type .
-                '!'
-            );
-        }
-
-        return static::ValidateTypeExpectNonNullableStringWithNamedType(
-            $closure,
-            $ref,
-            $argument,
-            $method,
-            $isParam
-        );
-    }
-
-    protected static function ValidateTypeExpectNonNullableStringWithNamedType(
-        Closure $closure,
-        ReflectionNamedType $ref,
-        int $argument,
-        string $method,
-        bool $isParam
-    ) : Closure {
-        $nullable = '';
-        $return_type = 'return type';
-
-        if ($isParam) {
-            $nullable = 'non-';
-            $return_type = 'first argument';
-        }
-
-        if ($isParam ? $ref->allowsNull() : ( ! $ref->allowsNull())) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must be a closure with a ' .
-                $nullable .
-                'nullable ' .
-                $return_type .
-                '!'
-            );
-        } elseif ('string' !== $ref->getName()) {
-            throw new InvalidArgumentException(
-                'Argument ' .
-                $argument .
-                ' passed to ' .
-                $method .
-                '() must be a closure with a string ' .
-                $return_type .
-                ', ' .
-                $ref->getName() .
-                ' given!'
-            );
-        }
-
-        return $closure;
-    }
-
     /**
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $getter
     */
     private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
     {
@@ -335,26 +195,13 @@ class DefinitionAssistant
                 );
             }
 
-            /**
-            * @var string
-            */
-            $type = $type;
-
-            /**
-            * @var Closure
-            */
-            $getter = static::ValidateClosure(
-                $getter,
-                self::ARG_INDEX_CLOSURE_GETTER,
-                (__CLASS__ . '::RegisterType')
-            );
-
             self::$getters[$type] = $getter;
         }
     }
 
     /**
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $setter
     */
     private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void
     {
@@ -366,20 +213,6 @@ class DefinitionAssistant
                     '::RegisterType() must declare __set() !'
                 );
             }
-
-            /**
-            * @var string
-            */
-            $type = $type;
-
-            /**
-            * @var Closure
-            */
-            $setter = static::ValidateClosure(
-                $setter,
-                self::ARG_INDEX_CLOSURE_SETTER,
-                (__CLASS__ . '::RegisterType')
-            );
 
             self::$setters[$type] = $setter;
         }

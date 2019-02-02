@@ -19,30 +19,6 @@ class DefinitionAssistant extends Base
         static::$setters = [];
     }
 
-    public static function PublicValidateClosure(
-        Closure $closure,
-        int $argument,
-        string $method
-    ) : Closure {
-        return static::ValidateClosure($closure, $argument, $method);
-    }
-
-    public static function PublicValidateTypeExpectNonNullableString(
-        Closure $closure,
-        ? ReflectionType $ref,
-        int $argument,
-        string $method,
-        bool $isParam
-    ) : Closure {
-        return static::ValidateTypeExpectNonNullableString(
-            $closure,
-            $ref,
-            $argument,
-            $method,
-            $isParam
-        );
-    }
-
     /**
     * @psalm-param class-string $type
     */

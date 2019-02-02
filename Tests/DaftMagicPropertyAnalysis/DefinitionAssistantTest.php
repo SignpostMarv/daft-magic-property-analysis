@@ -330,22 +330,6 @@ class DefinitionAssistantTest extends Base
         ];
     }
 
-    /**
-    * @dataProvider DataProviderBadClosure
-    */
-    public function testBadClosure(
-        Closure $closure,
-        int $argument,
-        string $method,
-        string $expectedException,
-        string $expectedExceptionMessage
-    ) : void {
-        static::expectException($expectedException);
-        static::expectExceptionMessage($expectedExceptionMessage);
-
-        DefinitionAssistant::PublicValidateClosure($closure, $argument, $method);
-    }
-
     public function DataProviderDoesNotHaveNamedRefType() : array
     {
         return [
@@ -354,29 +338,6 @@ class DefinitionAssistantTest extends Base
             [null, true],
             [null, false],
         ];
-    }
-
-    /**
-    * @dataProvider DataProviderDoesNotHaveNamedRefType
-    *
-    * @depends testBadClosure
-    */
-    public function testDoesNotHaveNamedRefType(? ReflectionType $ref, bool $isParam) : void
-    {
-        static::expectException(InvalidArgumentException::class);
-        static::expectExceptionMessage(
-            'Argument 1 passed to foo() must be a closure with a ' .
-            ($isParam ? 'strongly-typed first argument' : 'named return type') .
-            '!'
-        );
-
-        DefinitionAssistant::PublicValidateTypeExpectNonNullableString(
-            function () : void {},
-            $ref,
-            1,
-            'foo',
-            $isParam
-        );
     }
 
     /**
