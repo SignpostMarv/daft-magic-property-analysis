@@ -98,12 +98,7 @@ class DefinitionAssistant
             in_array($property, static::$properties[$type] ?? [], self::IN_ARRAY_STRICT_MODE) &&
             isset(static::$getters[$type])
         ) {
-            /**
-            * @var string|null
-            */
-            $out = static::$getters[$type]($property);
-
-            return $out;
+            return static::$getters[$type]($property);
         }
 
         return self::CheckOtherTypes(self::$getters, $type, $property);
@@ -118,12 +113,7 @@ class DefinitionAssistant
             in_array($property, static::$properties[$type] ?? [], self::IN_ARRAY_STRICT_MODE) &&
             isset(static::$setters[$type])
         ) {
-            /**
-            * @var string|null
-            */
-            $out = static::$setters[$type]($property);
-
-            return $out;
+            return static::$setters[$type]($property);
         }
 
         return self::CheckOtherTypes(self::$setters, $type, $property);
