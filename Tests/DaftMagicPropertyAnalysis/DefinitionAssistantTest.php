@@ -16,7 +16,7 @@ use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DefinitionAssistant;
 class DefinitionAssistantTest extends Base
 {
     /**
-    * @return array<int, array{0:class-string, 1:Closure, 2:Closure, 3:array<int, string>, 4:array<string, string>, 5:array<string, string>}>
+    * @return array<int, array{0:class-string, 1:Closure(string):?string, 2:Closure(string):?string, 3:array<int, string>, 4:array<string, string>, 5:array<string, string>}>
     */
     public function DataProviderRegisterTypeSuccessFromArray() : array
     {
@@ -52,6 +52,8 @@ class DefinitionAssistantTest extends Base
     * @param array<string, string> $setter_map
     *
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $getter
+    * @psalm-param null|Closure(string):?string $setter
     *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     */
@@ -102,6 +104,8 @@ class DefinitionAssistantTest extends Base
     * @param array<int, string> $properties
     *
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $getter
+    * @psalm-param null|Closure(string):?string $setter
     *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     *
@@ -138,7 +142,12 @@ class DefinitionAssistantTest extends Base
             '::RegisterType() must declare __get() !'
         );
 
-        DefinitionAssistant::RegisterType(Closure::class, function () : void {}, null, 'foo');
+        DefinitionAssistant::RegisterType(
+            Closure::class,
+            function (string $foo) : ? string { return null; },
+            null,
+            'foo'
+        );
     }
 
     public function testRegisterTypeMustImplementMagicSetter() : void
@@ -152,7 +161,12 @@ class DefinitionAssistantTest extends Base
             '::RegisterType() must declare __set() !'
         );
 
-        DefinitionAssistant::RegisterType(Closure::class, null, function () : void {}, 'foo');
+        DefinitionAssistant::RegisterType(
+            Closure::class,
+            null,
+            function (string $foo) : ? string { return null; },
+            'foo'
+        );
     }
 
     /**
@@ -178,6 +192,8 @@ class DefinitionAssistantTest extends Base
 
     /**
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $getter
+    * @psalm-param null|Closure(string):?string $setter
     *
     * @dataProvider DataProviderRegisterTypeSuccessFromArray
     *

@@ -40,14 +40,14 @@ class DefinitionAssistant
     /**
     * @var array<string, Closure>
     *
-    * @psalm-var array<class-string, Closure>
+    * @psalm-var array<class-string, Closure(string):?string>
     */
     protected static $getters = [];
 
     /**
     * @var array<string, Closure>
     *
-    * @psalm-var array<class-string, Closure>
+    * @psalm-var array<class-string, Closure(string):?string>
     */
     protected static $setters = [];
 
@@ -61,6 +61,8 @@ class DefinitionAssistant
 
     /**
     * @psalm-param class-string $type
+    * @psalm-param null|Closure(string):?string $getter
+    * @psalm-param null|Closure(string):?string $setter
     */
     public static function RegisterType(
         string $type,
