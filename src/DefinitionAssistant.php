@@ -9,6 +9,9 @@ namespace SignpostMarv\DaftMagicPropertyAnalysis;
 use Closure;
 use InvalidArgumentException;
 
+/**
+* @template T
+*/
 class DefinitionAssistant
 {
     const ARG_INDEX_CLOSURE_GETTER = 2;
@@ -28,26 +31,26 @@ class DefinitionAssistant
     /**
     * @var array<string, array<int, string>>
     *
-    * @psalm-var array<class-string, array<int, string>>
+    * @psalm-var array<class-string<T>, array<int, string>>
     */
     protected static $properties = [];
 
     /**
     * @var array<string, Closure>
     *
-    * @psalm-var array<class-string, Closure(string):?string>
+    * @psalm-var array<class-string<T>, Closure(string):?string>
     */
     protected static $getters = [];
 
     /**
     * @var array<string, Closure>
     *
-    * @psalm-var array<class-string, Closure(string):?string>
+    * @psalm-var array<class-string<T>, Closure(string):?string>
     */
     protected static $setters = [];
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     */
     public static function IsTypeUnregistered(string $type) : bool
     {
@@ -55,7 +58,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     * @psalm-param null|Closure(string):?string $getter
     * @psalm-param null|Closure(string):?string $setter
     */
@@ -87,7 +90,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     */
     public static function GetterMethodName(string $type, string $property) : ? string
     {
@@ -102,7 +105,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     */
     public static function SetterMethodName(string $type, string $property) : ? string
     {
@@ -117,9 +120,9 @@ class DefinitionAssistant
     }
 
     /**
-    * @param mixed $maybe
+    * @param string|object $maybe
     *
-    * @psalm-param class-string|object $maybe
+    * @psalm-param class-string<T>|T $maybe
     *
     * @return array<int, string>
     */
@@ -146,8 +149,8 @@ class DefinitionAssistant
     /**
     * @param array<string, Closure> $otherTypes
     *
-    * @psalm-param array<class-string, Closure(string):?string> $otherTypes
-    * @psalm-param class-string $type
+    * @psalm-param array<class-string<T>, Closure(string):?string> $otherTypes
+    * @psalm-param class-string<T> $type
     */
     protected static function CheckOtherTypes(
         array $otherTypes,
@@ -168,7 +171,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     * @psalm-param null|Closure(string):?string $getter
     */
     private static function MaybeRegisterTypeGetter(string $type, ? Closure $getter) : void
@@ -187,7 +190,7 @@ class DefinitionAssistant
     }
 
     /**
-    * @psalm-param class-string $type
+    * @psalm-param class-string<T> $type
     * @psalm-param null|Closure(string):?string $setter
     */
     private static function MaybeRegisterTypeSetter(string $type, ? Closure $setter) : void

@@ -14,6 +14,9 @@ use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
 
+/**
+* @template T
+*/
 class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassReflectionExtension
 {
     const IN_ARRAY_STRICT_MODE = true;
@@ -37,7 +40,7 @@ class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassR
         }
 
         /**
-        * @psalm-var class-string
+        * @psalm-var class-string<T>
         */
         $className = $classReflection->getName();
 

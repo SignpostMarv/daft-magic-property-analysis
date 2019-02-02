@@ -18,6 +18,9 @@ use ReflectionMethod;
 use ReflectionParameter;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant;
 
+/**
+* @template T
+*/
 class PropertyReflectionExtension implements PropertyReflection
 {
     const PARAM_INDEX_FIRST = 0;
@@ -72,7 +75,7 @@ class PropertyReflectionExtension implements PropertyReflection
         $this->broker = $broker;
 
         /**
-        * @psalm-var class-string
+        * @psalm-var class-string<T>
         */
         $className = $classReflection->getName();
 
@@ -149,7 +152,7 @@ class PropertyReflectionExtension implements PropertyReflection
     }
 
     /**
-    * @psalm-param class-string $className
+    * @psalm-param class-string<T> $className
     */
     protected static function PropertyIsPublic(string $className, string $property) : bool
     {
@@ -172,7 +175,7 @@ class PropertyReflectionExtension implements PropertyReflection
     protected function SetupReflections(ClassReflection $classReflection, string $property) : void
     {
         /**
-        * @psalm-var class-string
+        * @psalm-var class-string<T>
         */
         $className = $classReflection->getName();
         $getter = DefinitionAssistant::GetterMethodName($className, $property);
