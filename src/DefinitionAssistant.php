@@ -10,7 +10,7 @@ use Closure;
 use InvalidArgumentException;
 
 /**
-* @template T
+* @template T as object
 */
 class DefinitionAssistant
 {
