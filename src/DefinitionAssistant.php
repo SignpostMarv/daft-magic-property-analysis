@@ -8,9 +8,6 @@ namespace SignpostMarv\DaftMagicPropertyAnalysis;
 
 use Closure;
 use InvalidArgumentException;
-use ReflectionFunction;
-use ReflectionNamedType;
-use ReflectionType;
 
 class DefinitionAssistant
 {

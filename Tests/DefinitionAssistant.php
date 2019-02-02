@@ -6,8 +6,6 @@ declare(strict_types=1);
 
 namespace SignpostMarv\DaftMagicPropertyAnalysis\Tests;
 
-use Closure;
-use ReflectionType;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant as Base;
 
 class DefinitionAssistant extends Base
