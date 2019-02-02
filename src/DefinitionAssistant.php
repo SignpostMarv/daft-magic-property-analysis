@@ -20,8 +20,6 @@ class DefinitionAssistant
 
     const IN_ARRAY_STRICT_MODE = true;
 
-    const COUNT_EXPECT_AT_LEAST_ONE_PROPERTY = 1;
-
     const COUNT_EXPECTED_REQUIRED_PARAMETERS = 1;
 
     const PARAM_INDEX_FIRST = 0;
@@ -68,6 +66,7 @@ class DefinitionAssistant
         string $type,
         ? Closure $getter,
         ? Closure $setter,
+        string $property,
         string ...$properties
     ) : void {
         if ( ! self::IsTypeUnregistered($type)) {
@@ -80,11 +79,9 @@ class DefinitionAssistant
             throw new InvalidArgumentException(
                 'One or both of arguments 2 and 3 must be specified!'
             );
-        } elseif (count($properties) < self::COUNT_EXPECT_AT_LEAST_ONE_PROPERTY) {
-            throw new InvalidArgumentException(
-                'Argument 4 must be specified!'
-            );
         }
+
+        array_unshift($properties, $property);
 
         static::MaybeRegisterTypeGetter($type, $getter);
         static::MaybeRegisterTypeSetter($type, $setter);
