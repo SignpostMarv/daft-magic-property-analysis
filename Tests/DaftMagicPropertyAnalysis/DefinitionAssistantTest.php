@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\DaftMagicPropertyAnalysis\Tests\DaftMagicPropertyAnalysis;
 
+use ArgumentCountError;
 use Closure;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase as Base;
@@ -187,7 +188,7 @@ class DefinitionAssistantTest extends Base
             'One or both of arguments 2 and 3 must be specified!'
         );
 
-        DefinitionAssistant::RegisterType($type, null, null);
+        DefinitionAssistant::RegisterType($type, null, null, 'foo');
     }
 
     /**
@@ -199,6 +200,8 @@ class DefinitionAssistantTest extends Base
     *
     * @depends testRegisterTypeMustSpecifyAtLeastGetterOrSetter
     * @depends testRegisterTypeMustImplementMagicSetter
+    *
+    * @psalm-suppress TooFewArguments
     */
     public function testRegisterTypeMustSpecifyAtLeastOneProperty(
         string $type,
@@ -207,9 +210,15 @@ class DefinitionAssistantTest extends Base
     ) : void {
         DefinitionAssistant::ClearTypes();
 
-        static::expectException(InvalidArgumentException::class);
+        static::expectException(ArgumentCountError::class);
         static::expectExceptionMessage(
-            'Argument 4 must be specified!'
+            'Too few arguments to function ' .
+            BaseDefinitionAssistant::class .
+            '::RegisterType(), 3 passed in ' .
+            __FILE__ .
+            ' on line ' .
+            (__LINE__ + 4) .
+            ' and exactly 4 expected'
         );
 
         DefinitionAssistant::RegisterType($type, $getter, $setter);
