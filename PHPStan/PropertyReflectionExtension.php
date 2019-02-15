@@ -27,8 +27,6 @@ class PropertyReflectionExtension implements PropertyReflection
 
     const BOOL_NOT_STATIC = false;
 
-    const BOOL_IS_NOT_FILE = false;
-
     const BOOL_IS_READABLE = true;
 
     const BOOL_IS_WRITABLE = true;
@@ -138,10 +136,10 @@ class PropertyReflectionExtension implements PropertyReflection
     ) : ClassReflection {
         $reflectionClass = $refMethod->getDeclaringClass();
 
-        $filename = null;
+        $filename = $reflectionClass->getFileName();
 
-        if (self::BOOL_IS_NOT_FILE !== $reflectionClass->getFileName()) {
-            $filename = $reflectionClass->getFileName();
+        if ( ! is_string($filename)) {
+            $filename = null;
         }
 
         return $broker->getClassFromReflection(

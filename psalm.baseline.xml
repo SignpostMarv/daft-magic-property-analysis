@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files>
-  <file src="Tests\DaftMagicPropertyAnalysis\DefinitionAssistantTest.php">
-    <InvalidArgument occurrences="1">
-      <code>$properties</code>
-    </InvalidArgument>
-    <InvalidIterator occurrences="1">
-      <code>$properties</code>
-    </InvalidIterator>
-  </file>
-</files>
+<files/>
