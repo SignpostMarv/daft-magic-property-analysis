@@ -50,7 +50,7 @@
         "other-tests": [
             "phpstan analyse -c ./phpstan.neon .php_cs.dist ./src/ ./Tests/ ./PHPStan/ ./quick-checks/",
             "phpstan analyse -c ./Tests/PHPStan/config.neon ./quick-checks/",
-            "psalm",
+            "psalm --find-dead-code",
             "phpcpd ./src/ ./Tests/ ./PHPStan/",
             "phpmnd ./ --exclude=./phpunit/ --exclude=./vendor/ --non-zero-exit-on-violation --hint",
             "composer-require-checker check ./composer.json",
@@ -68,6 +68,7 @@
         "phpstan/phpstan-strict-rules": "^0.11.0",
         "phpunit/phpunit": "^7.5",
         "povils/phpmnd": "^2.0",
+        "psalm/plugin-phpunit": "^0.4.1",
         "roave/security-advisories": "dev-master",
         "sebastian/phpcpd": "^4.1",
         "signpostmarv/php-cs-fixer-config": "^0.7|^0.8",

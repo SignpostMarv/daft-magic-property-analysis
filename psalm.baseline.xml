@@ -1,2 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files/>
+<files>
+  <file src="PHPStan\ClassReflectionExtension.php">
+    <PossiblyUnusedParam occurrences="2">
+      <code>$classReflection</code>
+      <code>$propertyName</code>
+    </PossiblyUnusedParam>
+  </file>
+  <file src="Tests\DaftMagicPropertyAnalysis\DefinitionAssistantTest.php">
+    <PossiblyUnusedMethod occurrences="10">
+      <code>public function testRegisterTypeSuccess(</code>
+      <code>public function testRegisterTypeAlreadyRegistered(</code>
+      <code>public function testRegisterTypeMustImplementMagicGetter() : void</code>
+      <code>public function testRegisterTypeMustImplementMagicSetter() : void</code>
+      <code>public function testRegisterTypeMustSpecifyAtLeastGetterOrSetter(</code>
+      <code>public function testRegisterTypeMustSpecifyAtLeastOneProperty(</code>
+      <code>public function DataProviderNonStringScalarAndResource() : array</code>
+      <code>public function DataProviderBadClosure() : array</code>
+      <code>public function DataProviderDoesNotHaveNamedRefType() : array</code>
+      <code>public function testCheckOtherSources() : void</code>
+    </PossiblyUnusedMethod>
+    <UnusedParam occurrences="10">
+      <code>$foo</code>
+      <code>$foo</code>
+      <code>$a</code>
+      <code>$b</code>
+      <code>$a</code>
+      <code>$a</code>
+      <code>$a</code>
+      <code>$a</code>
+      <code>$a</code>
+      <code>$a</code>
+    </UnusedParam>
+  </file>
+  <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedIdentical.php">
+    <UnusedClass occurrences="1">
+      <code>class ucwordsPrefixedIdentical extends AbstractImplementation implements ucwordsPrefixedTypeInterface</code>
+    </UnusedClass>
+  </file>
+  <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTrait.php">
+    <PossiblyUnusedMethod occurrences="1">
+      <code>public function SetFooBar(string $v) : void</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface.php">
+    <PossiblyUnusedMethod occurrences="1">
+      <code>public function GetFooBar() : string;</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="Tests\PHPStan\PHPStanTest.php">
+    <PossiblyUnusedMethod occurrences="1">
+      <code>public function testPHPStan() : void</code>
+    </PossiblyUnusedMethod>
+  </file>
+</files>

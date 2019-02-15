@@ -31,7 +31,12 @@ class PHPStanTest extends Base
 
         $config = realpath(static::ObtainConfiguration());
 
-        if (is_string($config) && $command instanceof AnalyseCommand) {
+        if (is_string($config)) {
+            /**
+            * @var AnalyseCommand
+            */
+            $command = $command;
+
             $command->overrideConfiguration($config);
         }
 
