@@ -13,32 +13,13 @@
         "@default": true,
         "Coalesce": {
             "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
-            ]
-        },
-        "Foreach_": {
-            "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::CheckOtherTypes"
-            ]
-        },
-        "LessThan": {
-            "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType"
-            ]
-        },
-        "LessThanNegotiation": {
-            "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType"
             ]
         },
         "LogicalAnd": {
             "ignore": [
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::CheckOtherTypes",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::hasProperty",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::PropertyIsPublic",
@@ -48,12 +29,6 @@
         },
         "LogicalNot": {
             "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::IsTypeUnregistered",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::getProperty",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::DetermineDeclaringClass",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::getDeclaringClass",
@@ -71,13 +46,6 @@
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::__construct"
             ]
         },
-        "NotIdentical": {
-            "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::CheckOtherTypes",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString"
-            ]
-        },
         "ProtectedVisibility": {
             "ignore": [
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableStringWithNamedType",
@@ -93,21 +61,8 @@
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetSetterProps"
             ]
         },
-        "PublicVisibility": {
-            "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::GetterMethodName",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::IsTypeUnregistered",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::SetterMethodName"
-            ]
-        },
         "Throw_": {
             "ignore": [
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ObtainExpectedProperties",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::RegisterType",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::getProperty",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::getDeclaringClass",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::SetGetterProps",
