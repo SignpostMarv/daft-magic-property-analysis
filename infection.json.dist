@@ -55,6 +55,7 @@
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\ClassReflectionExtension::getProperty",
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::DetermineDeclaringClass",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::getDeclaringClass",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::isPrivate"
             ]
@@ -74,8 +75,7 @@
             "ignore": [
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::CheckOtherTypes",
                 "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateClosure",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString",
-                "SignpostMarv\\DaftMagicPropertyAnalysis\\PHPStan\\PropertyReflectionExtension::DetermineDeclaringClass"
+                "SignpostMarv\\DaftMagicPropertyAnalysis\\DefinitionAssistant::ValidateTypeExpectNonNullableString"
             ]
         },
         "ProtectedVisibility": {
