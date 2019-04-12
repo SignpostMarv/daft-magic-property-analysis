@@ -50,7 +50,7 @@
         "other-tests": [
             "phpstan analyse -c ./phpstan.neon .php_cs.dist ./src/ ./Tests/ ./PHPStan/ ./quick-checks/",
             "phpstan analyse -c ./Tests/PHPStan/config.neon ./quick-checks/",
-            "psalm --find-dead-code",
+            "psalm --find-dead-code --shepherd",
             "phpcpd ./src/ ./Tests/ ./PHPStan/",
             "phpmnd ./ --exclude=./phpunit/ --exclude=./vendor/ --non-zero-exit-on-violation --hint",
             "composer-require-checker check ./composer.json",
