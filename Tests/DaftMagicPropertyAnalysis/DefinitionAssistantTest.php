@@ -145,7 +145,7 @@ class DefinitionAssistantTest extends Base
 
         DefinitionAssistant::RegisterType(
             Closure::class,
-            function (string $foo) : ? string { return null; },
+            function (string $foo) : ? string { return '' === $foo ? null : $foo; },
             null,
             'foo'
         );
@@ -165,7 +165,7 @@ class DefinitionAssistantTest extends Base
         DefinitionAssistant::RegisterType(
             Closure::class,
             null,
-            function (string $foo) : ? string { return null; },
+            function (string $foo) : ? string { return '' === $foo ? null : $foo; },
             'foo'
         );
     }
@@ -248,7 +248,7 @@ class DefinitionAssistantTest extends Base
             ],
             [
                 function (string $a, string $b) : string {
-                    return '';
+                    return $a . $b;
                 },
                 1,
                 'foo',
@@ -260,7 +260,7 @@ class DefinitionAssistantTest extends Base
                 * @param string $a
                 */
                 function ($a) : string {
-                    return '';
+                    return $a;
                 },
                 1,
                 'foo',
@@ -272,7 +272,7 @@ class DefinitionAssistantTest extends Base
                 * @return string
                 */
                 function (string $a) {
-                    return '';
+                    return $a;
                 },
                 1,
                 'foo',
@@ -284,7 +284,7 @@ class DefinitionAssistantTest extends Base
                 * @return string
                 */
                 function (? string $a) : string {
-                    return '';
+                    return (string) $a;
                 },
                 1,
                 'foo',
@@ -296,7 +296,7 @@ class DefinitionAssistantTest extends Base
                 * @return string
                 */
                 function (int $a) : string {
-                    return '';
+                    return (string) $a;
                 },
                 1,
                 'foo',
@@ -308,7 +308,7 @@ class DefinitionAssistantTest extends Base
                 * @return string
                 */
                 function (string $a) : string {
-                    return '';
+                    return $a;
                 },
                 1,
                 'foo',
@@ -320,7 +320,7 @@ class DefinitionAssistantTest extends Base
                 * @return int|null
                 */
                 function (string $a) : ? int {
-                    return 0 === random_int(0, 1) ? 1 : null;
+                    return 0 === random_int(0, 1) ? (int) $a : null;
                 },
                 1,
                 'foo',
