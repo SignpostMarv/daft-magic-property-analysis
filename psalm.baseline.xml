@@ -19,18 +19,6 @@
       <code>public function DataProviderDoesNotHaveNamedRefType() : array</code>
       <code>public function testCheckOtherSources() : void</code>
     </PossiblyUnusedMethod>
-    <UnusedParam occurrences="10">
-      <code>$foo</code>
-      <code>$foo</code>
-      <code>$a</code>
-      <code>$b</code>
-      <code>$a</code>
-      <code>$a</code>
-      <code>$a</code>
-      <code>$a</code>
-      <code>$a</code>
-      <code>$a</code>
-    </UnusedParam>
   </file>
   <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedIdentical.php">
     <UnusedClass occurrences="1">
