@@ -3,6 +3,7 @@ Copyright 2019 SignpostMarv
 # daft-magic-property-analysis
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/?branch=master)
+[![Type Coverage](https://shepherd.dev/github/signpostmarv/daft-magic-property-analysis/coverage.svg)](https://shepherd.dev/github/signpostmarv/daft-magic-property-analysis)
 [![Build Status](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/badges/build.png?b=master)](https://scrutinizer-ci.com/g/SignpostMarv/daft-magic-property-analysis/build-status/master)
 
 General-purpose definition assistant designed to assist with the definition of magic getters.
