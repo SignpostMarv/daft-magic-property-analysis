@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files>
   <file src="PHPStan\ClassReflectionExtension.php">
-    <PossiblyUnusedParam occurrences="2">
-      <code>$classReflection</code>
-      <code>$propertyName</code>
-    </PossiblyUnusedParam>
+    <UnusedClass occurrences="1">
+      <code>class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassReflectionExtension</code>
+    </UnusedClass>
   </file>
   <file src="Tests\DaftMagicPropertyAnalysis\DefinitionAssistantTest.php">
     <PossiblyUnusedMethod occurrences="10">
@@ -19,11 +18,6 @@
       <code>public function DataProviderDoesNotHaveNamedRefType() : array</code>
       <code>public function testCheckOtherSources() : void</code>
     </PossiblyUnusedMethod>
-  </file>
-  <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedIdentical.php">
-    <UnusedClass occurrences="1">
-      <code>class ucwordsPrefixedIdentical extends AbstractImplementation implements ucwordsPrefixedTypeInterface</code>
-    </UnusedClass>
   </file>
   <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTrait.php">
     <PossiblyUnusedMethod occurrences="1">
