@@ -10,7 +10,6 @@ use ArgumentCountError;
 use Closure;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase as Base;
-use ReflectionType;
 use SignpostMarv\DaftMagicPropertyAnalysis\DefinitionAssistant as BaseDefinitionAssistant;
 use SignpostMarv\DaftMagicPropertyAnalysis\Tests\DefinitionAssistant;
 
