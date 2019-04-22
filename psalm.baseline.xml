@@ -5,33 +5,14 @@
       <code>class ClassReflectionExtension implements BrokerAwareExtension, PropertiesClassReflectionExtension</code>
     </UnusedClass>
   </file>
-  <file src="Tests\DaftMagicPropertyAnalysis\DefinitionAssistantTest.php">
-    <PossiblyUnusedMethod occurrences="10">
-      <code>public function testRegisterTypeSuccess(</code>
-      <code>public function testRegisterTypeAlreadyRegistered(</code>
-      <code>public function testRegisterTypeMustImplementMagicGetter() : void</code>
-      <code>public function testRegisterTypeMustImplementMagicSetter() : void</code>
-      <code>public function testRegisterTypeMustSpecifyAtLeastGetterOrSetter(</code>
-      <code>public function testRegisterTypeMustSpecifyAtLeastOneProperty(</code>
-      <code>public function DataProviderNonStringScalarAndResource() : array</code>
-      <code>public function DataProviderBadClosure() : array</code>
-      <code>public function DataProviderDoesNotHaveNamedRefType() : array</code>
-      <code>public function testCheckOtherSources() : void</code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTrait.php">
     <PossiblyUnusedMethod occurrences="1">
-      <code>public function SetFooBar(string $v) : void</code>
+      <code>SetFooBar</code>
     </PossiblyUnusedMethod>
   </file>
   <file src="Tests\DaftMagicPropertyAnalysis\Fixtures\ucwordsPrefixedTypeInterface.php">
     <PossiblyUnusedMethod occurrences="1">
-      <code>public function GetFooBar() : string;</code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="Tests\PHPStan\PHPStanTest.php">
-    <PossiblyUnusedMethod occurrences="1">
-      <code>public function testPHPStan() : void</code>
+      <code>GetFooBar</code>
     </PossiblyUnusedMethod>
   </file>
 </files>
