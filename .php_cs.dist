@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace SignpostMarv\CS;
 
-return ConfigUsedWithPhpstanWithoutNullableReturn::createWithPaths(...[
+return ConfigUsedWithStaticAnalysis::createWithPaths(...[
     __FILE__,
     __DIR__ . '/xdebug-filter.phpunit.php',
     __DIR__ . '/src/',
